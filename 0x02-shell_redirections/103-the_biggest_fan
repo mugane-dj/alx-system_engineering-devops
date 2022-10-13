@@ -1,2 +1,2 @@
 #!/bin/bash
-IFS=$'\t' read -r host url | sort -n | head -n 11 
+IFS=$'\t' read -r host url | sort | uniq -c| sort -nr | head -n 11 
