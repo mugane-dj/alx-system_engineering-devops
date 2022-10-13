@@ -1,0 +1,2 @@
+#!/bin/bash
+IFS=$'\t' read -r host url | sort 
