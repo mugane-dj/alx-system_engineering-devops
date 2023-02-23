@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#FizzBuzz
+str1="FizzBuzz"
+str2="Fizz"
+str3="Buzz"
+divisor_1=3
+divisor_2=5
+count=1
+while [ $count -le 100 ]
+do
+    if [ $((count % divisor_1)) = 0 ] && [ $((count % divisor_2)) = 0 ]
+    then
+        echo "$str1"
+    elif [ $((count % divisor_1)) = 0 ]
+    then
+        echo "$str2"
+    elif [ $((count % divisor_2)) = 0 ]
+    then
+        echo "$str3"
+    else
+        echo "$count"
+    fi
+
+    ((count++))
+done
