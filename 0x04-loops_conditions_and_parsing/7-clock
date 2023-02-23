@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 #Displays 12-hr clock
 hour=0
-while [ $hour -lt 24 ]
+str="Hour: "
+while [ $hour -le 12 ]
 do
-    echo "$hour"
-    min=0
-    while [ $min -lt 60 ]
+    echo "${str}${hour}"
+    min=1
+    while [ $min -le 59 ]
     do
         echo "$min"
-        ((minute++))
+        ((min++))
     done
-
     ((hour++))
 done
