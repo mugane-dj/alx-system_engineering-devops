@@ -6,21 +6,23 @@ str3="bad luck from Italy"
 count=1
 while [ $count -le 20 ]
 do
-    if [ $count -eq 4 ]
-    then
-        echo "$count"
-        echo "$str1"
-    elif [ $count -eq 9 ]
-    then
-        echo "$count"
-        echo "$str2"
-    elif [ $count -eq 17 ]
-    then
-        echo "$count"
-        echo "$str3"
-    else
-        echo "$count"
-    fi
+    case $count in
+        4)
+            echo "$count"
+            echo "$str1"
+            ;;
+        9)
+            echo "$count"
+            echo "$str2"
+            ;;
+        17)
+            echo "$count"
+            echo "$str3"
+            ;;
+        *)
+            echo "$count"
+            ;;
+    esac
 
     ((count++))
 done
