@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#Displays count with other info on superstitius numbers
+str1="bad luck from China"
+str2="bad luck from Japan"
+str3="bad luck from Italy"
+count=1
+while [ $count -le 20 ]
+do
+    if [ $count -eq 4 ]
+    then
+        echo "$count"
+        echo "$str1"
+    elif [ $count -eq 9 ]
+    then
+        echo "$count"
+        echo "$str2"
+    elif [ $count -eq 17 ]
+    then
+        echo "$count"
+        echo "$str3"
+    else
+        echo "$count"
+    fi
+
+    ((count++))
+done
