@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#Displays Best School 10 times
+str1="Best School"
+str2="Hi"
+count=1
+while [ $count -le 10 ]
+do
+    if [ $count -eq 9 ]
+    then
+        echo -e "${str1}\n${str2}"
+    else
+        echo "$str1"
+    fi
+
+    ((count++))
+done
