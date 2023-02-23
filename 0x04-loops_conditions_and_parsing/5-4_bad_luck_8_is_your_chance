@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#Displays Best School 10 times
+str1="Best School"
+str2="bad luck"
+str3="good luck"
+count=1
+while [ $count -le 10 ]
+do
+    if [ $count -eq 4 ]
+    then
+        echo "$str2"
+    elif [ $count -eq 8 ]
+    then
+        echo "$str3"
+    else
+        echo "$str1"
+    fi
+
+    ((count++))
+done
