@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#Displays To infinity and beyond
+str="To infinity and beyond"
+str2="I am invincible!!!"
+for (( ; ; ))
+do
+    echo "$str"
+    sleep 2
+    trap 'echo "$str2"' SIGTERM
+done
