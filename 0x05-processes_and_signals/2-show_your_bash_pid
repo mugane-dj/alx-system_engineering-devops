@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Displays a list of currently running processes containing bash
+# shellcheck disable=SC2009
+ps axo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd | grep bash
