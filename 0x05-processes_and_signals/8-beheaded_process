@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Kills a process without SIGTERM signal
+PID=$(pgrep -f "bash ./7-highlander")
+kill -9 "$PID"
