@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #Displays a list of currently running processes
-ps axo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd
+ps axo user,pid,%cpu,%mem,vsz,rss,tty,stat,bsdstart,time,cmd
