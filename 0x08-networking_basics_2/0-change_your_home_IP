@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Edits /etc/hosts with different configurations
+sed -i "127.0.0.2 localhost \n 8.8.8.8 facebook.com" /etc/hosts
