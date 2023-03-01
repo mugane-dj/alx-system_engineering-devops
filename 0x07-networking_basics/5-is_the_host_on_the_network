@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Ping
+# Pings an IP address passed as an argument five times
 ip_address=$1
 if [ -n "$ip_address" ]
 then
