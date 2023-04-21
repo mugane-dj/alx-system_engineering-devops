@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+# Bash script that uses ssh to connect to a remote server @52.201.220.125
 ssh -i ~/.ssh/school ubuntu@52.201.220.125
