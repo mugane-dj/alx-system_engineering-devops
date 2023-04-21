@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# SSH Config File for host: 52.201.220.125
+Host 52.201.220.125
+     PasswordAuthentication no
+     IdentityFile ~/.ssh/school
