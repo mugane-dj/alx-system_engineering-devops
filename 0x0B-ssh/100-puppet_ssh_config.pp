@@ -1,16 +1,16 @@
 # Puppet manifest that configures ssh to disallow password authentication
-class ssh_config {
-    file {'/etc/ssh/sshd_config':
+class ssh_manifest {
+    file {'/etc/ssh/ssh_config':
       ensure  => file,
       owner   => 'root',
       group   => 'root',
       mode    => '0600',
       content => "PasswordAuthentication no \n
                   IdentityFile ~/.ssh/school",
-      notify  => Service['sshd'],
+      notify  => Service['ssh'],
     }
 
-    service { 'sshd':
+    service { 'ssh':
       ensure => running,
       enable => true,
     }
