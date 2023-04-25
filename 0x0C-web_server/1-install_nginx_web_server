@@ -6,7 +6,17 @@ sudo apt-get -y update
 echo "Installing nginx..."
 sleep 2
 sudo apt-get -y install nginx
+echo "Configuring nginx..."
+sleep 2
+string="Hello World!"
+echo "server {
+    listen 80;
+    listen [::]:80;
+    
+    location / {
+        return 200 '$string';
+    }
+}" | sudo tee /etc/nginx/sites-available/default
 echo "Starting nginx..."
 sleep 2
-echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
 sudo service nginx start
