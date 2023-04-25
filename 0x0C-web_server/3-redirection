@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Installs nginx on a web server.
+echo "Updating dependencies..."
+sleep 2
+sudo apt-get -y update
+echo "Installing nginx..."
+sleep 2
+sudo apt-get -y install nginx
+echo "Configuring nginx..."
+sleep 2
+redirect="Moved Permanently"
+echo "server {
+    listen 80;
+    listen [::]:80;
+
+    location /redirect_me {
+        return 301 '$redirect';
+    }
+}" | sudo tee /etc/nginx/sites-available/default
+echo "Starting nginx..."
+sleep 2
+sudo service nginx start
