@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Installs nginx on a web server.
+echo "Updating dependencies..."
+sleep 2
+sudo apt-get -y update
+echo "Installing nginx..."
+sleep 2
+sudo apt-get -y install nginx
+echo "Starting nginx..."
+sleep 2
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
+sudo service nginx start
