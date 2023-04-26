@@ -9,19 +9,18 @@ sudo apt-get -y install nginx
 echo "Configuring nginx..."
 sleep 2
 Error="Ceci n'est pas une page"
-sudo touch /opt/local/html/404.html
-echo "$Error" | sudo tee /opt/local/html/404.html
+echo "$Error" | sudo tee /usr/share/nginx/html/custom_404.html
 echo "server {
     listen 80;
     listen [::]:80;
-    error_page 404 /404.html
+    error_page 404 /custom_404.html;
     
-    location / {
-        return 404;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=o_oenl2Be-w;
     }
-    
-    location /404.html {
-        root /opt/local/html;
+
+    location /custom_404.html {
+        root /usr/share/nginx/html;
     }
 }" | sudo tee /etc/nginx/sites-available/default
 echo "Starting nginx..."
