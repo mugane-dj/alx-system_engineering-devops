@@ -9,7 +9,7 @@ sudo apt-get -y install nginx
 echo "Configuring nginx..."
 sleep 2
 Error="Ceci n'est pas une page"
-echo "$Error" | sudo tee /usr/share/nginx/html/custom_404.html
+echo "$Error" | sudo tee /var/www/html/custom_404.html
 echo "server {
     listen 80;
     listen [::]:80;
@@ -20,7 +20,7 @@ echo "server {
     }
 
     location /custom_404.html {
-        root /usr/share/nginx/html;
+        root /var/www/html;
     }
 }" | sudo tee /etc/nginx/sites-available/default
 echo "Starting nginx..."
