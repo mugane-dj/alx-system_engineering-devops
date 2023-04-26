@@ -9,17 +9,19 @@ sudo apt-get -y install nginx
 echo "Configuring nginx..."
 sleep 2
 Error="Ceci n'est pas une page"
-sudo touch 404.html
-echo "$Error" > '404.html'
+sudo touch /opt/local/html/404.html
+echo "$Error" | sudo tee /opt/local/html/404.html
 echo "server {
     listen 80;
     listen [::]:80;
-
     error_page 404 /404.html
-
-    location = /404.html {
-        internal;
-        root 404.html;
+    
+    location / {
+        return 404;
+    }
+    
+    location /404.html {
+        root /opt/local/html;
     }
 }" | sudo tee /etc/nginx/sites-available/default
 echo "Starting nginx..."
