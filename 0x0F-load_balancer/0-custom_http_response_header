@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Adds custom header to nginx server
+echo "Updating dependencies..."
+sudo apt-get -y update
+sleep 2
+echo "Installing nginx..."
+sudo apt-get -y install nginx
+sleep 2
+echo "Starting nginx..."
+sudo service nginx start
+sleep 2
+echo "Configuring nginx..."
+Error="Ceci n'est pas une page"
+echo "$Error" | sudo tee /var/www/html/custom_404.html
+echo "server {
+    listen 80;
+    listen [::]:80;
+    error_page 404 /custom_404.html;
+    add_header X-Served-By $HOSTNAME;
+    
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=o_oenl2Be-w;
+    }
+
+    location /custom_404.html {
+        root /var/www/html;
+    }
+}" | sudo tee /etc/nginx/sites-available/default
+sleep 2
+echo "Restarting nginx..."
+sudo service nginx restart
