@@ -12,7 +12,6 @@ sudo cp -a /etc/haproxy/haproxy.cfg{,.orig}
 echo "frontend haproxy-main
     bind *:80
     mode tcp
-    option forwardfor
     default_backend nginx_webservers
 
 backend nginx_webservers
