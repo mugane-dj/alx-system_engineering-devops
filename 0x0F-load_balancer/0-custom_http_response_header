@@ -10,6 +10,7 @@ echo "Starting nginx..."
 sudo service nginx start
 sleep 2
 echo "Configuring nginx..."
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
 Error="Ceci n'est pas une page"
 echo "$Error" | sudo tee /var/www/html/custom_404.html
 echo "server {
