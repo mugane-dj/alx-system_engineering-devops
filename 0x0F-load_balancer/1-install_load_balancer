@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Installs HAproxy
+echo "Updating dependencies..."
+sudo apt-get -y update
+sleep 2
+echo "Installing HAproxy..."
+sudo apt-get -y install haproxy
+sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
+sleep 2
+echo "Configuring HAproxy..."
+sudo cp -a /etc/haproxy/haproxy.cfg{,.orig}
+echo "frontend haproxy-main
+    bind *:80
+    mode tcp
+    option forwardfor
+    default_backend nginx_webservers
+
+backend nginx_webservers
+    balance roundrobin
+    server 167995-web-01    18.234.193.103:80 check
+    server 167995-web-02    100.25.102.172:80 check
+" | sudo tee /etc/haproxy/haproxy.cfg
+sleep 2
+echo "Starting HAproxy..."
+sudo service haproxy start
