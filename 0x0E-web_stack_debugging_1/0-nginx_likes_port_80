@@ -7,10 +7,10 @@ sleep 2
 echo "Reconfiguring nginx..."
 cp -a /etc/nginx/sites-available/default{,.orig}
 sudo sed -i 's/^\tlisten 80 default_server;/\tlisten 80;/g' /etc/nginx/sites-available/default
-sudo sed -i 's/^\tlisten \[::\]:80 default_server ipv6only=on;/\tlisten \[::\]:80;/g' /etc/nginx/sites-available/default
+sudo sed -i 's/^\tlisten \[::\]:80 default_server ipv6only=on;/\tlisten \[::\]:80 ipv4only=on;/g' /etc/nginx/sites-available/default
 cp -a /etc/nginx/sites-enabled/default{,.orig}
 sudo sed -i 's/^\tlisten 8080 default_server;/\tlisten 80 default_server;/g' /etc/nginx/sites-enabled/default                        
-sudo sed -i 's/^\tlisten \[::\]:8080 default_server ipv6only=on;/\tlisten \[::\]:80 default_server;/g' /etc/nginx/sites-enabled/default
+sudo sed -i 's/^\tlisten \[::\]:8080 default_server ipv6only=on;/\tlisten \[::\]:80 default_server ipv4only=on;/g' /etc/nginx/sites-enabled/default
 sleep 2
 echo "Killing current nginx process..."
 sudo lsof -t -i tcp:8080 | sudo xargs kill
