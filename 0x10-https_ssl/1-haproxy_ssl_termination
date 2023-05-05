@@ -1,0 +1,19 @@
+# HAProxy config
+frontend haproxy-main
+    bind *:80
+    bind *:443 ssl crt /etc/haproxy/certs
+    mode http
+    default_backend http_nginx_backend
+    use https_nginx_backend    if { ssl_fc }
+
+backend http_nginx_backend
+    mode http
+    balance roundrobin
+    server 167995-web-01    18.234.193.103:80 check
+    server 167995-web-02    100.25.102.172:80 check
+
+backend https_nginx_backend
+    mode http
+    balance roundrobin
+    server 167995-web-01    18.234.193.103:443 check
+    server 167995-web-02    100.25.102.172:443 check
