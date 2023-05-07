@@ -6,7 +6,7 @@ display ()
     sub="$2"
     printf "The subdomain %s is a " "$sub"
     dig "$sub.$dom" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ printf $4 }'
-    printf " record and point to "
+    printf " record and points to "
     dig "$sub.$dom" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ printf $5 }'
     echo ""
 }
