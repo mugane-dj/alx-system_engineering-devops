@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#Creates a MySQL backup using mysqldump.
+mysqldump -u root -p"$1" tyrell_corp > backup.sql
+formatted_date=$(date +%d-%m-%Y)
+archive="$formatted_date.tar.gz"
+tar -cvzf "$archive" backup.sql
