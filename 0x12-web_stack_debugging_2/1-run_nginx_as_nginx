@@ -5,7 +5,7 @@
 sudo useradd -s /sbin/nologin nginx
 
 #Set shell for user
-chsh -s /bin/bash nginx
+sudo chsh -s /bin/bash nginx
 
 #Change ownership of Nginx directories
 sudo chown -R nginx:nginx /var/log/nginx /var/lib/nginx
