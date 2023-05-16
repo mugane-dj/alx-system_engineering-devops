@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#Script to configure nginx to run as nginx
+
+#Add user
+sudo useradd -s /sbin/nologin nginx
+
+#Change ownership of Nginx directories
+sudo chown -R nginx:nginx /var/log/nginx /var/lib/nginx
+
+#Modify nginx to run as new user
+sudo sed -i 's/#user www-data;/user nginx;/' /etc/nginx/nginx.conf
+
+#Restart nginx
+sudo service nginx restart
