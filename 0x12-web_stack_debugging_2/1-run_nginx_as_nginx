@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#Script to configure nginx to run with non-root user
+
+#Change ownership of Nginx directories
+sudo chown -R nginx:nginx /var/log/nginx /var/lib/nginx
+
+#Modify nginx to run as new user and listen on port 8080
+sudo sed -i 's/#user www-data;/user nginx;/' /etc/nginx/nginx.conf
+sudo sed -i 's/listen 80 default_server/listen 8080 default_server/g' /etc/nginx/sites-available/default
+sudo sed -i 's/listen [::]:80 default_server ipv6only=on/listen [::]:8080 default_server ipv6only=on/g' /etc/nginx/sites-available/default
+sudo chmod +r /etc/nginx/nginx.conf
+
+#Restart nginx
+sudo pkill apache2
+sudo -u nginx service nginx restart
