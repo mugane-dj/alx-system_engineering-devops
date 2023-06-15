@@ -1,1 +1,3 @@
+#!/usr/bin/env bash
+# Reloads gunicorn gracefully
 sudo service gunicorn reload
