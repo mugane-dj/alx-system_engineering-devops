@@ -5,8 +5,8 @@ exec { 'stop-nginx':
   path    => 'usr/local/bin:usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/bin'
 }
 
-exec { 'add-worker-rlimit':
-  command => 'sed -i "s/15/100000" /etc/nginx/nginx.conf',
+exec { 'increase-worker-rlimit':
+  command => 'sed -i "s/15/10000/" /etc/default/nginx',
   path    => 'usr/local/bin:usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/bin',
   require => Exec['stop-nginx']
 }
@@ -14,5 +14,5 @@ exec { 'add-worker-rlimit':
 exec { 'restart-nginx':
   command => 'service nginx restart',
   path    => 'usr/local/bin:usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/bin',
-  require => Exec['add-worker-rlimit']
+  require => Exec['increase-worker-rlimit']
 }
