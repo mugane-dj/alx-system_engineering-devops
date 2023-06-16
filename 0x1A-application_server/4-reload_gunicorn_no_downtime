@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# Reloads gunicorn gracefully
-sudo service gunicorn reload
+# Sends a HUP signal to gunicorn to restart gracefully
+PIDS=$(pgrep -P 1 -f gunicorn)
+kill -HUP "$PIDS"
